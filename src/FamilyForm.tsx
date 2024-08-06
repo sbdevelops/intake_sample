@@ -97,7 +97,7 @@ const FamilyForm: React.FC = () => {
             `"${ethnicity}"`,
             familyCount,
             `"${menCount}/${womenCount}"`,
-            isVeteran ? 'Yes' : 'No',
+            isVeteran ? '1' : '0',
             age0To4,
             age5To12,
             age13To17,
@@ -105,9 +105,10 @@ const FamilyForm: React.FC = () => {
             age30To60,
             age60Plus,
             `"${formatPhoneNumber(phoneNumber)}"`,
-            `"${county}"`,
+            `"${county.split(' ')[0]}"`, // Take the first word of the county
             totalUnder17
         ].join('\t');
+
     }
 
     const copyText = () => {
