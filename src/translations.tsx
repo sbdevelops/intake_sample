@@ -24,6 +24,7 @@ const translations = {
         back: 'Back',
         next: 'Next',
         yourName: 'Your Name',  // Added translation
+        agesOfEveryone: "What are the ages of everyone in the household?"
         // Add more keys and translations as needed
     },
     es: {
@@ -51,6 +52,7 @@ const translations = {
         back: 'Atrás',
         next: 'Siguiente',
         yourName: 'Tu Nombre',  // Added translation
+        agesOfEveryone: '¿Cuáles son las edades de todos en el hogar?'
         // Add more keys and translations as needed
     },
     pt: {
@@ -77,7 +79,8 @@ const translations = {
         whereDoYouLive: 'Onde você mora?',
         back: 'Voltar',
         next: 'Próximo',
-        yourName: 'Seu Nome',  // Added translation
+        yourName: 'Seu Nome',
+        agesOfEveryone: 'Quais são as idades de todos na casa?'// Added translation
         // Add more keys and translations as needed
     },
     // Add more languages and translations as needed

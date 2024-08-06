@@ -209,7 +209,7 @@ const FamilyForm: React.FC = () => {
                 </Box>
             case 1:
                 return <Box>
-                    <Typography variant="h6" sx={{ pb: 2}}>What are the ages of everyone in the household?</Typography>
+                    <Typography variant="h6" sx={{ pb: 2}}>{t("agesOfEveryone")}</Typography>
                     <AgeStepper
                         label={t("age0To4")}
                         value={age0To4}
@@ -224,7 +224,7 @@ const FamilyForm: React.FC = () => {
                     />
 
                     <AgeStepper
-                        label={t("age12To17")}
+                        label={t("age13To17")}
                         value={age13To17}
                         onIncrement={() => setAge13To17((prev) => prev + 1)}
                         onDecrement={() => setAge13To17((prev) => Math.max(0, prev - 1))}
