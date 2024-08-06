@@ -107,7 +107,7 @@ const FamilyForm: React.FC = () => {
             `"${formatPhoneNumber(phoneNumber)}"`,
             `"${county}"`,
             totalUnder17
-        ].join(', ');
+        ].join('\t');
     }
 
     const copyText = () => {
