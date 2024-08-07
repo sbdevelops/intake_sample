@@ -13,12 +13,11 @@ import {
 } from '@mui/material';
 import {Add, CheckCircle, Remove} from '@mui/icons-material';
 import Divider from "@mui/material/Divider";
-import AgeStepper from './AgeStepper.tsx';
-import PhoneKeypad from "./PhoneKeypad.tsx";
-import CountySelector from "./CountySelector.tsx";
-import {useTranslationContext} from "./TranslationContext.tsx"; // Adjust path as needed
-
-const steps = ['Family Information', 'Household Ages', 'Additional Details', "Done"];
+import AgeStepper from './AgeStepper';
+import PhoneKeypad from "./PhoneKeypad";
+import CountySelector from "./CountySelector";
+import {useTranslationContext} from "./TranslationContext";
+import QRCodeComponent from "./QRCodeComponent"; // Adjust path as needed
 
 const FamilyForm: React.FC = () => {
     const [activeStep, setActiveStep] = useState(0);
@@ -40,6 +39,13 @@ const FamilyForm: React.FC = () => {
     const [isSubmitted, setSubmitted] = useState(false);
 
     const { t } = useTranslationContext();
+
+    const steps: (() => string)[] = [
+        () => t("stepFamilyInformation"),
+        () => t("stepHouseholdAges"),
+        () => t("stepAdditionalDetails"),
+        () => t("stepDone")
+    ];
 
     const totalAgeSelectionCount = () => {
         return age0To4 + age5To12 + age13To17 + age18To29 + age30To60 + age60Plus
@@ -301,6 +307,8 @@ const FamilyForm: React.FC = () => {
                     </Button>
 
                     <p>{getText()}</p>
+
+                    <QRCodeComponent text={getText()} />
                 </div>
         }
     }
@@ -333,8 +341,8 @@ const FamilyForm: React.FC = () => {
         <Box sx={{ width: '100%', maxWidth: 600, mx: 'auto', p: 2 }}>
             <Stepper activeStep={activeStep} alternativeLabel>
                 {steps.map((label) => (
-                    <Step key={label}>
-                        <StepLabel>{label}</StepLabel>
+                    <Step key={label()}>
+                        <StepLabel>{label()}</StepLabel>
                     </Step>
                 ))}
             </Stepper>

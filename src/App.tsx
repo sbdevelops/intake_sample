@@ -4,11 +4,12 @@ import Divider from '@mui/material/Divider';
 
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import Header from "./Header.tsx";
+import Header from "./Header";
 import {Box, Container, Paper, Stack, Typography} from "@mui/material";
-import { TranslationProvider, useTranslationContext } from './TranslationContext.tsx';
-import Buttons from "./PrimaryButtons.tsx";
-import FamilyForm from "./FamilyForm.tsx";
+import { TranslationProvider, useTranslationContext } from './TranslationContext';
+import Buttons from "./PrimaryButtons";
+import FamilyForm from "./FamilyForm";
+import {Language} from "./translations";
 
 enum StatusEnum {
     HOME = 'home',
@@ -29,7 +30,7 @@ function AppContent() {
     const { t, language, setLanguage } = useTranslationContext();
     // Define the enum
 
-    const handleLanguage = (event: React.MouseEvent<HTMLElement>, newLanguage: string) => {
+    const handleLanguage = (event: React.MouseEvent<HTMLElement>, newLanguage: Language) => {
         if (newLanguage !== null) {
             console.log(event)
             setLanguage(newLanguage);
@@ -92,7 +93,7 @@ function AppContent() {
 
                 <Divider/>
 
-                <div style={{margin: 0, padding: 0, width: '100%', height: '100vh', overflowX: 'hidden'}}>
+                <div style={{margin: 0, padding: 0, width: '100%', overflowX: 'hidden'}}>
                     <Container
                         style={{
                             width: '100%',

@@ -1,7 +1,7 @@
 // src/Buttons.tsx
 import React from 'react';
 import { Button, Typography, Box } from '@mui/material';
-import { useTranslationContext } from './TranslationContext.tsx';
+import { useTranslationContext } from './TranslationContext';
 
 interface ButtonsProps {
     onNewClick: () => void;

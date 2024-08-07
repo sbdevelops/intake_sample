@@ -7,6 +7,7 @@ interface AgeStepperProps {
     value: number;
     onIncrement: () => void;
     onDecrement: () => void;
+    big?: boolean;
 }
 
 const AgeStepper: React.FC<AgeStepperProps> = ({ label, value, onIncrement, onDecrement, big = false}) => {

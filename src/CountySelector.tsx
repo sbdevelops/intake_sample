@@ -1,14 +1,21 @@
 import React from 'react';
 import { Button, Box, Typography, TextField } from '@mui/material';
+import {useTranslationContext} from "./TranslationContext";
 
 interface CountySelectorProps {
     county: string;
     setCounty: (county: string) => void;
 }
 
+interface CountyCities {
+    [key: string]: string[];
+}
+
 const CountySelector: React.FC<CountySelectorProps> = ({ county, setCounty }) => {
+    const { t } = useTranslationContext();
+
     // Define counties and their cities
-    const counties = {
+    const counties : CountyCities = {
         'Cobb County': ['Marietta', 'Smyrna', 'Kennesaw'],
         'Cherokee County': ['Canton', 'Woodstock', 'Holly Springs'],
         'Fulton County': ['Atlanta', 'Roswell', 'Sandy Springs'],
@@ -28,31 +35,39 @@ const CountySelector: React.FC<CountySelectorProps> = ({ county, setCounty }) =>
         <Box sx={{ p: 2 }}>
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 {Object.keys(counties).map((countyOption) => (
-                    <Box key={countyOption} sx={{ display: 'flex', flexDirection: 'column' }}>
+
                         <Button
-                            variant="contained"
+                            variant={county === countyOption ? 'outlined' : 'contained'}
                             onClick={() => handleCountyClick(countyOption)}
-                            sx={{ minWidth: '150px', mb: 1 }}
+                            sx={{
+                                minWidth: '150px',
+                                mb: 1,
+                            }}
                         >
-                            <Typography sx={{minWidth: '200px', color: 'white'}}>
-                                {countyOption}
-                            </Typography>
-                            <p>
-                                {counties[countyOption].map((city) => (
-                                    <Typography key={city} variant="body2">
-                                        {city}
-                                    </Typography>
-                                ))}
-                            </p>
+                            <Box key={countyOption}>
+                                <Typography variant="body1">
+                                    {countyOption}
+                                </Typography>
+                                <Typography variant="caption">
+                                    {counties[countyOption].map((city, index, array) => (
+                                        <>
+                                            {/*<Typography key={city} variant="body2" component="span">*/}
+                                                {city}
+                                            {/*</Typography>*/}
+                                            {index < array.length - 1 && ', '}
+                                        </>
+                                    ))}
+                                </Typography>
+
+                            </Box>
                         </Button>
-                    </Box>
                 ))}
                 <TextField
-                    label="Enter County"
+                    label={t("countyField")}
                     variant="outlined"
                     value={county}
                     onChange={handleManualEntryChange}
-                    sx={{ mt: 2 }}
+                    sx={{mt: 2}}
                 />
             </Box>
         </Box>

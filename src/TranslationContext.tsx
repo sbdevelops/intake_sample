@@ -1,21 +1,21 @@
 // src/TranslationContext.tsx
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import translations from './translations.tsx';
+import translations, { Language } from './translations';
 
-const defaultLanguage = 'en'; // Default language
+const defaultLanguage: Language = 'en'; // Default language
 
 interface TranslationContextType {
-    language: string;
-    setLanguage: (language: string) => void;
+    language: Language;
+    setLanguage: (language: Language) => void;
     t: (key: string) => string;
 }
 
 const TranslationContext = createContext<TranslationContextType | undefined>(undefined);
 
 export const TranslationProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const [language, setLanguage] = useState(defaultLanguage);
+    const [language, setLanguage] = useState(defaultLanguage as Language);
 
-    const t = (key: string) => translations[language][key] || translations[defaultLanguage][key];
+    const t = (key: string) => translations[key][language] || translations[key][defaultLanguage];
 
     return (
         <TranslationContext.Provider value={{ language, setLanguage, t }}>

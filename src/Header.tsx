@@ -22,22 +22,24 @@ const Header: React.FC<HeaderProps> = ({ toggleButtonGroup, onHomeClick }) => {
         // </AppBar>
 
             // <AppBar position="static">
-        <Box sx={{ p: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
-            {/* Top row with Home Icon and Title */}
-            <Box sx={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'center' }}>
-                <IconButton edge="start" color="inherit" aria-label="home" onClick={onHomeClick} sx={{ mr: 2 }}>
-                    <HomeIcon />
-                </IconButton>
-                <Typography variant="h6" component="div">
-                    FPC
-                </Typography>
-            </Box>
+        <Toolbar>
+            <Box sx={{ p: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }} position="static">
+                {/* Top row with Home Icon and Title */}
+                <Box sx={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'center' }}>
+                    <IconButton edge="start" color="inherit" aria-label="home" onClick={onHomeClick} sx={{ mr: 2 }}>
+                        <HomeIcon />
+                    </IconButton>
+                    <Typography variant="h6" component="div">
+                        FPC
+                    </Typography>
+                </Box>
 
-            {/* Bottom row with Toggle Button Group */}
-            <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%', mt: 2 }}>
-                {toggleButtonGroup}
+                {/* Bottom row with Toggle Button Group */}
+                <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%', mt: 2 }}>
+                    {toggleButtonGroup}
+                </Box>
             </Box>
-        </Box>
+        </Toolbar>
             // </AppBar>
     );
 };
